@@ -5,7 +5,7 @@ import blch.framework.annotations.Solution;
 import blch.framework.external.SolutionBase;
 
 
-@Solution
+// @Solution
 public class MySolution extends SolutionBase {
 
     @Override

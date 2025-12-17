@@ -6,7 +6,8 @@ import blch.framework.annotations.CurrPkg;
 import blch.framework.annotations.Run;
 
 
-@Run(packages={"mysolution","mychallenges"})
+@Run(packages={"mysolution_ok","mychallenges"})
+@CurrPkg
 public class SolutionApplication {
 
     public static void main(String... args) {
