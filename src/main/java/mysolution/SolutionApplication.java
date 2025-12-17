@@ -4,6 +4,7 @@ import blch.framework.BlindChallengeApplication;
 import blch.framework.annotations.CurrPkg;
 import blch.framework.annotations.Run;
 
+
 @Run
 @CurrPkg
 public class SolutionApplication {

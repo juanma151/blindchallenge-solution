@@ -1,11 +1,11 @@
 package mysolution;
 
 import blch.framework.annotations.Solution;
-import blch.framework.solution.ISolution;
+import blch.framework.external.interfaces.SolutionData;
 
 
-@Solution(id="JMA-TEST", name="Solución de prueba de Juanma")
-public class MySolution implements ISolution {
+@Solution
+public class MySolution implements SolutionData {
 
     @Override
     public Object execute(Object... args) {
