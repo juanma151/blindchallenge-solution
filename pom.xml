@@ -8,9 +8,9 @@
 
     <groupId>org.hagane</groupId>
     <artifactId>blindchallenge-solution</artifactId>
-    <version>1.0.0-SNAPSHOT</version>
+    <version>2.0.0</version>
 
-    <name>blindsolution</name>
+    <name>blindchallenge-solution</name>
     <description>Student solution for Blind Challenge</description>
 
     <properties>
@@ -20,12 +20,21 @@
     </properties>
 
     <dependencies>
+
         <!-- Motor del challenge -->
         <dependency>
             <groupId>org.hagane</groupId>
             <artifactId>blindchallenge-framework</artifactId>
-            <version>3.2.0-SNAPSHOT</version>
+            <version>4.0.0</version>
         </dependency>
+        
+        <!-- Challenges -->
+        <dependency>
+            <groupId>org.hagane</groupId>
+            <artifactId>blindchallenge-challenges</artifactId>
+            <version>1.0.0-SNAPSHOT</version>
+        </dependency>
+        
     </dependencies>
   
     <build>
@@ -38,7 +47,7 @@
                 <version>3.14.0</version>
                 <configuration>
                     <release>21</release>
-		    <encoding>UTF-8</encoding>
+                    <encoding>UTF-8</encoding>
                 </configuration>
             </plugin>
 
@@ -48,7 +57,7 @@
                 <artifactId>exec-maven-plugin</artifactId>
                 <version>3.5.0</version>
                 <configuration>
-                    <mainClass>mysolution.SolutionApplication</mainClass>
+                    <mainClass>myapp.SolutionApplication</mainClass>
                 </configuration>
             </plugin>
 

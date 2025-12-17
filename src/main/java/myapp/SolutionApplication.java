@@ -1,12 +1,12 @@
-package mysolution;
+package myapp;
+
 
 import blch.framework.BlindChallengeApplication;
 import blch.framework.annotations.CurrPkg;
 import blch.framework.annotations.Run;
 
 
-@Run
-@CurrPkg
+@Run(packages={"mysolution","mychallenges"})
 public class SolutionApplication {
 
     public static void main(String... args) {
