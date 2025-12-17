@@ -1,12 +1,12 @@
 package mysolution;
 
+
 import blch.framework.annotations.Solution;
-import blch.framework.datamodel.utils.IntendedError;
-import blch.framework.external.interfaces.SolutionData;
+import blch.framework.external.SolutionBase;
 
 
 @Solution
-public class MySolution implements SolutionData {
+public class MySolution extends SolutionBase {
 
     @Override
     public Object execute(Object... args) {
