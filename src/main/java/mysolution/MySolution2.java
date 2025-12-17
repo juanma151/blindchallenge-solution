@@ -10,7 +10,7 @@ import java.util.List;
 import java.util.Map;
 
 
-@Solution
+//@Solution
 public class MySolution2 extends SolutionBase {
     
     private Object[] pop(Object... args) {
