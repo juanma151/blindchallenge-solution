@@ -1,6 +1,7 @@
 package mysolution;
 
 import blch.framework.annotations.Solution;
+import blch.framework.datamodel.utils.IntendedError;
 import blch.framework.external.interfaces.SolutionData;
 
 
@@ -9,7 +10,7 @@ public class MySolution implements SolutionData {
 
     @Override
     public Object execute(Object... args) {
-        return 0;
+        throw new RuntimeException("HOLA");
     }
 
 }
