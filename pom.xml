@@ -1,67 +1,177 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0"
-         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0
-                             https://maven.apache.org/xsd/maven-4.0.0.xsd">
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
 
-    <modelVersion>4.0.0</modelVersion>
+	<modelVersion>4.0.0</modelVersion>
 
-    <groupId>org.hagane</groupId>
-    <artifactId>blindchallenge-solution</artifactId>
-    <version>2.0.0</version>
+	<groupId>org.hagane</groupId>
+	<artifactId>blindchallenge-solution</artifactId>
+	<version>2.0.0</version>
 
-    <name>blindchallenge-solution</name>
-    <description>Student solution for Blind Challenge</description>
+	<name>blindchallenge-03-solution</name>
+	<description>Student solution for Blind Challenge</description>
 
-    <properties>
-        <java.version>21</java.version>
-        <maven.compiler.release>21</maven.compiler.release>
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-    </properties>
+	<properties>
+		<java.version>21</java.version>
+		<spring-boot.version>3.5.8</spring-boot.version>
+		<maven.compiler.release>21</maven.compiler.release>
+		<maven-compiler-plugin.version>3.14.0</maven-compiler-plugin.version>
+		<exec-maven-plugin.version>3.5.0</exec-maven-plugin.version>
+		<fmt-maven-plugin.version>2.29</fmt-maven-plugin.version>
+		<google-java-format.version>1.33.0</google-java-format.version>
+		<checkstyle.version>10.21.2</checkstyle.version>
+		<maven-checkstyle-plugin.version>3.6.0</maven-checkstyle-plugin.version>
+		<lifecycle-mapping.version>1.0.0</lifecycle-mapping.version>
 
-    <dependencies>
+		<blindchallenge-framework.version>4.0.0</blindchallenge-framework.version>
+		<blindchallenge-challenges.version>2.0.0</blindchallenge-challenges.version>
 
-        <!-- Motor del challenge -->
-        <dependency>
-            <groupId>org.hagane</groupId>
-            <artifactId>blindchallenge-framework</artifactId>
-            <version>4.0.0</version>
-        </dependency>
-        
-        <!-- Challenges -->
-        <dependency>
-            <groupId>org.hagane</groupId>
-            <artifactId>blindchallenge-challenges</artifactId>
-            <version>1.0.0-SNAPSHOT</version>
-        </dependency>
-        
-    </dependencies>
-  
-    <build>
-        <plugins>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+	</properties>
 
-            <!-- Compilador -->
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-compiler-plugin</artifactId>
-                <version>3.14.0</version>
-                <configuration>
-                    <release>21</release>
-                    <encoding>UTF-8</encoding>
-                </configuration>
-            </plugin>
+	<dependencies>
 
-            <!-- EJECUCIÓN -->
-            <plugin>
-                <groupId>org.codehaus.mojo</groupId>
-                <artifactId>exec-maven-plugin</artifactId>
-                <version>3.5.0</version>
-                <configuration>
-                    <mainClass>myapp.SolutionApplication</mainClass>
-                </configuration>
-            </plugin>
+		<!-- Motor del challenge -->
+		<dependency>
+			<groupId>org.hagane</groupId>
+			<artifactId>blindchallenge-framework</artifactId>
+			<version>${blindchallenge-framework.version}</version>
+		</dependency>
 
-        </plugins>
-    </build>
+		<!-- Challenges -->
+		<dependency>
+			<groupId>org.hagane</groupId>
+			<artifactId>blindchallenge-challenges</artifactId>
+			<version>${blindchallenge-challenges.version}</version>
+		</dependency>
+
+	</dependencies>
+
+	<build>
+		<plugins>
+
+			<!-- Compilador -->
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>${maven-compiler-plugin.version}</version>
+				<configuration>
+					<release>${java.version}</release>
+					<encoding>${project.build.sourceEncoding}</encoding>
+				</configuration>
+			</plugin>
+
+			<!-- EJECUCIÓN -->
+			<plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>exec-maven-plugin</artifactId>
+				<version>${exec-maven-plugin.version}</version>
+				<configuration>
+					<mainClass>myapp.SolutionApplication</mainClass>
+				</configuration>
+			</plugin>
+
+			<!-- Google Java Format -->
+			<plugin>
+				<groupId>com.spotify.fmt</groupId>
+				<artifactId>fmt-maven-plugin</artifactId>
+				<version>${fmt-maven-plugin.version}</version>
+				<executions>
+					<execution>
+						<id>format</id>
+						<phase>validate</phase>
+						<goals>
+							<goal>format</goal>
+						</goals>
+					</execution>
+				</executions>
+
+				<dependencies>
+					<dependency>
+						<groupId>com.google.googlejavaformat</groupId>
+						<artifactId>google-java-format</artifactId>
+						<version>${google-java-format.version}</version>
+					</dependency>
+				</dependencies>
+			</plugin>
+
+			<!-- checkstyle -->
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-checkstyle-plugin</artifactId>
+				<version>${maven-checkstyle-plugin.version}</version>
+
+				<dependencies>
+					<dependency>
+						<groupId>com.puppycrawl.tools</groupId>
+						<artifactId>checkstyle</artifactId>
+						<version>${checkstyle.version}</version>
+					</dependency>
+				</dependencies>
+
+				<configuration>
+					<configLocation>
+						${project.basedir}/config/checkstyle/checkstyle.xml
+					</configLocation>
+					<consoleOutput>true</consoleOutput>
+					<failsOnError>false</failsOnError>
+					<failOnViolation>false</failOnViolation>
+					<linkXRef>false</linkXRef>
+				</configuration>
+
+				<executions>
+					<execution>
+						<id>checkstyle</id>
+						<phase>verify</phase>
+						<goals>
+							<goal>check</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+		</plugins>
+
+		<pluginManagement>
+			<plugins>
+				<plugin>
+					<groupId>org.eclipse.m2e</groupId>
+					<artifactId>lifecycle-mapping</artifactId>
+					<version>${lifecycle-mapping.version}</version>
+					<configuration>
+						<lifecycleMappingMetadata>
+							<pluginExecutions>
+								<pluginExecution>
+									<pluginExecutionFilter>
+										<groupId>com.spotify.fmt</groupId>
+										<artifactId>fmt-maven-plugin</artifactId>
+										<versionRange>[2.29,)</versionRange>
+										<goals>
+											<goal>format</goal>
+										</goals>
+									</pluginExecutionFilter>
+									<action>
+										<ignore />
+									</action>
+								</pluginExecution>
+							</pluginExecutions>
+						</lifecycleMappingMetadata>
+					</configuration>
+				</plugin>
+			</plugins>
+		</pluginManagement>
+	</build>
+
+	<dependencyManagement>
+		<dependencies>
+			<dependency>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-dependencies</artifactId>
+				<version>${spring-boot.version}</version>
+				<type>pom</type>
+				<scope>import</scope>
+			</dependency>
+		</dependencies>
+	</dependencyManagement>
 
 </project>
