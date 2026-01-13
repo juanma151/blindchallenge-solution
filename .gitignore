@@ -50,3 +50,6 @@ replay_pid*
 ## VSCODE
 /.vscode/
 
+/.settings/
+/.classpath
+/.project
