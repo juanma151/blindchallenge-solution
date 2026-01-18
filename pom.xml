@@ -7,7 +7,7 @@
 
 	<groupId>org.hagane</groupId>
 	<artifactId>blindchallenge-solution</artifactId>
-	<version>3.0.0</version>
+	<version>10.50.0</version>
 
 	<name>blindchallenge-03-solution</name>
 	<description>Student solution for Blind Challenge</description>
@@ -30,6 +30,13 @@
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.mainclass>app.BlindChallengeApp</project.mainclass>
 	</properties>
+
+	<repositories>
+		<repository>
+			<id>local-repo-blindchallenge</id>
+			<url>file://${project.basedir}/.maven-repo</url>
+		</repository>
+	</repositories>
 
 	<dependencies>
 		<!-- Lombok -->
