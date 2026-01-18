@@ -6,74 +6,55 @@
 	<modelVersion>4.0.0</modelVersion>
 
 	<groupId>org.hagane</groupId>
-	<artifactId>blindchallenge-solution</artifactId>
-	<version>10.50.0</version>
+	<artifactId>blindchallenge-challenges</artifactId>
+	<version>7.5.0</version>
+	<packaging>jar</packaging>
 
-	<name>blindchallenge-03-solution</name>
-	<description>Student solution for Blind Challenge</description>
+	<name>blindchallenge-challenges</name>
+	<description>Blind Challenge Application Challenges suite</description>
 
 	<properties>
-		<exec-maven-plugin.version>3.5.0</exec-maven-plugin.version>
 		<fmt-maven-plugin.version>2.29</fmt-maven-plugin.version>
 		<google-java-format.version>1.33.0</google-java-format.version>
 		<java.version>21</java.version>
-		<javadoc.version>3.7.0</javadoc.version>
 		<lifecycle-mapping.version>1.0.0</lifecycle-mapping.version>
 		<maven-compiler-plugin.version>3.14.0</maven-compiler-plugin.version>
-		<maven.compiler.release>21</maven.compiler.release>
 		<spring-boot.version>3.5.8</spring-boot.version>
 
 		<checkstyle.config>${project.basedir}/config/checkstyle/checkstyle.xml</checkstyle.config>
 		<checkstyle.version>10.21.2</checkstyle.version>
 		<maven-checkstyle-plugin.version>3.6.0</maven-checkstyle-plugin.version>
 
-		<blindchallenge-challenges.version>7.5.0</blindchallenge-challenges.version>
 		<blindchallenge-framework.version>7.5.0</blindchallenge-framework.version>
 
+		<!-- Encoding -->
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		<project.mainclass>app.BlindChallengeApp</project.mainclass>
+		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 	</properties>
 
-	<repositories>
-		<repository>
-			<id>local-repo-blindchallenge</id>
-			<url>file://${project.basedir}/.maven-repo</url>
-		</repository>
-	</repositories>
+	<dependencyManagement>
+		<dependencies>
+			<dependency>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-dependencies</artifactId>
+				<version>${spring-boot.version}</version>
+				<type>pom</type>
+				<scope>import</scope>
+			</dependency>
+		</dependencies>
+	</dependencyManagement>
 
 	<dependencies>
-		<!-- Lombok -->
-		<dependency>
-			<groupId>org.projectlombok</groupId>
-			<artifactId>lombok</artifactId>
-			<scope>provided</scope>
-		</dependency>
-
-		<!-- Logs con slf4j -->
-		<dependency>
-			<groupId>org.slf4j</groupId>
-			<artifactId>slf4j-api</artifactId>
-		</dependency>
-
 		<!-- Motor del challenge -->
 		<dependency>
 			<groupId>org.hagane</groupId>
 			<artifactId>blindchallenge-framework</artifactId>
 			<version>${blindchallenge-framework.version}</version>
 		</dependency>
-
-		<!-- Challenges -->
-		<dependency>
-			<groupId>org.hagane</groupId>
-			<artifactId>blindchallenge-challenges</artifactId>
-			<version>${blindchallenge-challenges.version}</version>
-		</dependency>
-
 	</dependencies>
 
 	<build>
 		<plugins>
-
 			<!-- Compilador -->
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
@@ -82,22 +63,6 @@
 				<configuration>
 					<release>${java.version}</release>
 					<encoding>${project.build.sourceEncoding}</encoding>
-					<annotationProcessorPaths>
-						<path>
-							<groupId>org.projectlombok</groupId>
-							<artifactId>lombok</artifactId>
-						</path>
-					</annotationProcessorPaths>
-				</configuration>
-			</plugin>
-
-			<!-- EJECUCIÓN -->
-			<plugin>
-				<groupId>org.codehaus.mojo</groupId>
-				<artifactId>exec-maven-plugin</artifactId>
-				<version>${exec-maven-plugin.version}</version>
-				<configuration>
-					<mainClass>${project.mainclass}</mainClass>
 				</configuration>
 			</plugin>
 
@@ -185,27 +150,8 @@
 						</lifecycleMappingMetadata>
 					</configuration>
 				</plugin>
-
-				<!-- JAVADOC-->
-				<plugin>
-					<groupId>org.apache.maven.plugins</groupId>
-					<artifactId>maven-javadoc-plugin</artifactId>
-					<version>${javadoc.version}</version>
-				</plugin>
 			</plugins>
 		</pluginManagement>
 	</build>
-
-	<dependencyManagement>
-		<dependencies>
-			<dependency>
-				<groupId>org.springframework.boot</groupId>
-				<artifactId>spring-boot-dependencies</artifactId>
-				<version>${spring-boot.version}</version>
-				<type>pom</type>
-				<scope>import</scope>
-			</dependency>
-		</dependencies>
-	</dependencyManagement>
 
 </project>
