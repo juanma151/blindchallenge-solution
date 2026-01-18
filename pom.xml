@@ -7,7 +7,7 @@
 
 	<groupId>org.hagane</groupId>
 	<artifactId>blindchallenge-solution</artifactId>
-	<version>2.0.0</version>
+	<version>3.0.0</version>
 
 	<name>blindchallenge-03-solution</name>
 	<description>Student solution for Blind Challenge</description>
@@ -25,9 +25,10 @@
 		<lifecycle-mapping.version>1.0.0</lifecycle-mapping.version>
 
 		<blindchallenge-framework.version>4.0.0</blindchallenge-framework.version>
-		<blindchallenge-challenges.version>2.0.0</blindchallenge-challenges.version>
+		<blindchallenge-challenges.version>3.0.0</blindchallenge-challenges.version>
 
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<project.mainclass>app.BlindChallengeApp</project.mainclass>
 	</properties>
 
 	<dependencies>
@@ -68,7 +69,7 @@
 				<artifactId>exec-maven-plugin</artifactId>
 				<version>${exec-maven-plugin.version}</version>
 				<configuration>
-					<mainClass>myapp.SolutionApplication</mainClass>
+					<mainClass>${project.mainclass}</mainClass>
 				</configuration>
 			</plugin>
 
@@ -157,6 +158,13 @@
 							</pluginExecutions>
 						</lifecycleMappingMetadata>
 					</configuration>
+				</plugin>
+
+				<!-- JAVADOC-->
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-javadoc-plugin</artifactId>
+					<version>3.7.0</version>
 				</plugin>
 			</plugins>
 		</pluginManagement>

@@ -1,14 +1,14 @@
-package myapp;
+package app;
 
 import blch.framework.BlindChallengeApplication;
 import blch.framework.annotations.CurrPkg;
 import blch.framework.annotations.Run;
 
-@Run(packages = {"soltest", "chtest"})
+@Run(packages = {"solution", "challenges"})
 @CurrPkg
-public class SolutionApplication {
+public class BlindChallengeApp {
 
   public static void main(String... args) {
-    BlindChallengeApplication.run(SolutionApplication.class, args);
+    BlindChallengeApplication.run(BlindChallengeApp.class, args);
   }
 }
